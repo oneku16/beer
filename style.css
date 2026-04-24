@@ -49,9 +49,16 @@ body {
 }
 
 .subtitle {
-  margin: 0 0 32px;
+  margin: 0 0 8px;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.day-hint {
+  margin: 0 0 32px;
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+  font-weight: 500;
 }
 
 .state {

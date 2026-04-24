@@ -2,6 +2,19 @@
   const TOTAL = 1_000_000;
   const MIN_LOADING_MS = 400;
 
+  // Index matches Date#getDay(): 0 = Sunday ... 6 = Saturday.
+  const DAYS = [
+    { name: 'Sunday',    pHeads: 0.80, hint: 'Sunday — 80% yes. Brunch rules apply.' },
+    { name: 'Monday',    pHeads: 0.00, hint: 'Monday — absolutely not.' },
+    { name: 'Tuesday',   pHeads: 0.30, hint: 'Tuesday — 30% yes. The odds are not with you.' },
+    { name: 'Wednesday', pHeads: 0.50, hint: 'Wednesday — pure 50/50. Fate decides.' },
+    { name: 'Thursday',  pHeads: 0.50, hint: 'Thursday — pure 50/50. Fate decides.' },
+    { name: 'Friday',    pHeads: 1.00, hint: 'Friday — you definitely should. 🍺' },
+    { name: 'Saturday',  pHeads: 0.80, hint: 'Saturday — 80% yes. The weekend approves.' },
+  ];
+
+  const today = DAYS[new Date().getDay()];
+
   const idleEl = document.getElementById('idle');
   const loadingEl = document.getElementById('loading');
   const resultEl = document.getElementById('result');
@@ -10,6 +23,9 @@
   const progressEl = document.getElementById('progress');
   const verdictEl = document.getElementById('verdict');
   const statsEl = document.getElementById('stats');
+  const dayHintEl = document.getElementById('day-hint');
+
+  dayHintEl.textContent = today.hint;
 
   const numberFmt = new Intl.NumberFormat('en-US');
 
@@ -54,7 +70,7 @@
       worker.terminate();
     };
 
-    worker.postMessage({ type: 'start', total: TOTAL });
+    worker.postMessage({ type: 'start', total: TOTAL, pHeads: today.pHeads });
   }
 
   function renderResult(heads, tails) {

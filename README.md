@@ -8,6 +8,22 @@ never freezes) and gives you a verdict:
 - If heads > tails → *"Yes, you should drink pivo 🍺"*
 - Otherwise → *"Not this time, bruh ❌"*
 
+The coin isn't always fair — the "drink" probability is weighted by the
+current day of the week:
+
+| Day       | P(drink) |
+| --------- | -------- |
+| Monday    |   0%     |
+| Tuesday   |  30%     |
+| Wednesday |  50%     |
+| Thursday  |  50%     |
+| Friday    | 100%     |
+| Saturday  |  80%     |
+| Sunday    |  80%     |
+
+All 1,000,000 iterations still run in every case — only the threshold on
+`Math.random()` changes.
+
 ## File structure
 
 ```
