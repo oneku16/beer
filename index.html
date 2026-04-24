@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Should I drink a beer?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="card" aria-live="polite">
+      <h1 class="title">Should I drink a beer?</h1>
+      <p class="subtitle">One million coin tosses. One honest answer.</p>
+
+      <section id="idle" class="state state--visible">
+        <button id="decide" class="btn btn--primary" type="button">Decide</button>
+      </section>
+
+      <section id="loading" class="state" aria-hidden="true">
+        <div class="spinner" role="status" aria-label="Loading"></div>
+        <p class="loading-text">Consulting the beer gods&hellip;</p>
+        <p id="progress" class="progress">Tossing 0%</p>
+      </section>
+
+      <section id="result" class="state" aria-hidden="true">
+        <p id="verdict" class="verdict"></p>
+        <p id="stats" class="stats"></p>
+        <button id="again" class="btn btn--ghost" type="button">Try again</button>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
